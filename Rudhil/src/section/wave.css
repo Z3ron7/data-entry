@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wave-container {
+    height: 17.8%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+
+}
+
+.wave-parent {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(121, 215, 252);
+    flex-direction: column-reverse;
+    max-width: 1920px;
+}
+
+.wave-parent img {
+    width: 100%;
+    max-width: 100%;
+    height: 130px;
+    filter: invert(33%) sepia(72%) saturate(492%) hue-rotate(135deg) brightness(96%) contrast(97%);
+
+}
