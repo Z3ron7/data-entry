@@ -11,7 +11,8 @@ const Transaction = () => {
   const [due_date, setDue_date] = useState(null);
   const [customers, setCustomers] = useState([]);
   const [coverage, setCoverage] = useState([]);
-  const [name, setName] = useState([]);
+  const [name1, setName1] = useState(null);
+  const [name2, setName2] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [optionList1, setOptionList1] = useState([]);
   const [optionList2, setOptionList2] = useState([]);
@@ -28,16 +29,24 @@ const Transaction = () => {
   const fetchInsuranceData = useCallback(async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/customer_entry");
-      setOptionList1(response.data);
+      const options = response.data.map((item) => ({
+        value: item.id,
+        label: item.Name,
+      }));
+      setOptionList1(options);
     } catch (error) {
       console.log(error);
     }
   }, []);
-
+  
   const fetchInsuranceData1 = useCallback(async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/customer_insured");
-      setOptionList2(response.data);
+      const options = response.data.map((item) => ({
+        value: item.id,
+        label: item.Name,
+      }));
+      setOptionList2(options);
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +65,7 @@ const Transaction = () => {
         policy,
         transac_date,
         due_date,
-        name: name.map((option) => option.label),
+        name: (name1 && name1.label) || (name2 && name2.label)
       });
 
       const { id } = addResponse.data; // Get the ID from the response
@@ -72,7 +81,8 @@ const Transaction = () => {
       setTransac_date(null);
       setDue_date(null);
       setCoverage([]);
-      setName([]);
+      setName1(null);
+      setName2(null);
     } catch (error) {
       console.log(error);
     }
@@ -110,23 +120,28 @@ const Transaction = () => {
     { value: "2", label: "Health" },
     { value: "3", label: "Accident" },
     { value: "4", label: "Investment" },
-    { value: "5", label: "Accident" }
+    { value: "5", label: "Fire Insurance" },
   ];
 
-  const handleSelect = (data) => {
+  const handleSelect0 = (data) => {
     setCoverage(data);
   };
-  const handleSelect1 = (data) => {
-    setName(data);
+
+  const handleSelect1 = (selectedOption) => {
+    setName1(selectedOption);
+  };
+
+  const handleSelect2 = (selectedOption) => {
+    setName2(selectedOption);
   };
 
   return (
-    <div className="container-fluid mt-3 px-3 py-2" style={{ backgroundColor: "rgb(228, 228, 215)" }}>
+    <div className="container-fluid mt-3 px-3 border border-dark border-2 py-2" style={{ backgroundColor: "rgb(228, 228, 215)" }}>
       <div className="row">
         <div className="col-sm-3 "></div>
         <div className="col-md-8">
           <div className="row border">
-            <div className="col-8 col-sm-6 border border-dark border-2" >
+            <div className="col-8 col-sm-6 border border-dark border-2">
               <form onSubmit={sendCustomer} style={{ borderRadius: "1rem" }}>
                 <div className="mb-2 input-group-sm w-100 mt-2">
                   <input
@@ -138,24 +153,24 @@ const Transaction = () => {
                     onChange={(e) => setPolicy(e.target.value)}
                   />
                 </div>
-                <div className="dropdown-container w-100 py-2" >
+                <div className="dropdown-container w-100 py-2">
                   <Select
                     options={optionList1}
                     placeholder="Insurance"
                     isSearchable={true}
                     isClearable={true}
-                    value={name}
+                    value={name1}
                     onChange={handleSelect1}
                   />
                 </div>
-                <div className="dropdown-container w-100 py-2" >
+                <div className="dropdown-container w-100 py-2">
                   <Select
                     options={optionList2}
                     placeholder="Insured"
                     isSearchable={true}
                     isClearable={true}
-                    value={name}
-                    onChange={handleSelect1}
+                    value={name2}
+                    onChange={handleSelect2}
                   />
                 </div>
                 <div className="form-control mb-2">
@@ -186,14 +201,14 @@ const Transaction = () => {
             </div>
             <div className="col-4 col-sm-6 border border-dark border-2 d-flex flex-column">
               <form onSubmit={sendCustomern} style={{ borderRadius: "1rem", maxWidth: "800px" }} className="flex-grow-1">
-                <div className="dropdown-container w-100 py-2" >
+                <div className="dropdown-container w-100 py-2">
                   <Select
                     options={optionList}
                     placeholder="Select name"
                     isSearchable={true}
                     isMulti
                     value={coverage}
-                    onChange={handleSelect}
+                    onChange={handleSelect0}
                   />
                 </div>
                 <button className="btna lg mx-2 px-2 text-light" style={{ width: "90px" }} type="submit">

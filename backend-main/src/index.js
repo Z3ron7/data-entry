@@ -22,7 +22,7 @@ const transactionRoute = require("./routes/Transaction")
 app.use("/api/users", usersRoute);
 app.use("/api/customer_insured", customer_insuredRoute);
 app.use("/api/customer_entry", customer_entryRoute);
-app.use("/api/Transaction", transactionRoute);
+app.use("/api/transaction", transactionRoute);
 
 app.use(cookieParser());
 

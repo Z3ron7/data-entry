@@ -9,6 +9,7 @@ import Login from "./buttons/Login";
 import Signup from "./buttons/Signup";
 import Navbar from "./component/Navbar";
 import Sidebar from "./component/Sidebar";
+import Home from "./pages/Home";
 import Admin from "./component/Admin";
 import ProdList from "./pages/ProdList";
 import InsuredList from "./pages/InsuredList";
@@ -19,8 +20,16 @@ import Logout from "./buttons/Logout";
 
 // Layout component with Sidebar and Navbar
 const MainLayout = ({ children }) => (
-  <div>
-    <Sidebar />
+  <div className="container-fluid bg-light min-vh-100">
+    <div className="row">
+    <div className="col-2 bg-white vh-100 position-fixed">
+      <Sidebar />
+    </div>
+    <div className="col-2"></div>
+      <div className="col" style={{height: "45px"}}>
+      <Home />
+      </div>
+    </div>
     {children}
   </div>
 );

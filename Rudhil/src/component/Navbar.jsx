@@ -38,25 +38,29 @@ const Navbar = () => {
   }
 
   return (
-    <nav class="navbar navbar-light bg-white py-0 shadow sticky-top navbar-custom">
-  <div class="container-fluid">
-  <a class="navbar-brand" href="#">
-      <img src={Logo} alt="" width="60" height="50"/>
-    </a>
-
-        <div className="container">
+    <nav className="navbar navbar-expand-sm navbar-light bg-light navbar-custom">
+    <i className="navbar-brand bi bi-justify fs-4"></i>
+    <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+    aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
       {auth ? (
-        <div className="d-flex justify-content-end" >
-        <h3>{name}</h3>
-        <button className="btn btn-outline-danger" style={{marginLeft: "10px"}} onClick={handleLogout}>
-          Logout <i className="fa fa-sign-out "></i>
-        </button>
-      </div>
-      
-      ) : null}
+      <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {name}
+          </a>
+          <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a className="dropdown-item" href="#">Profile</a></li>
+            <li><hr className="dropdown-divider"/></li>
+            <li><a className="dropdown-item" onClick={handleLogout} role='button'>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      ) : null} 
     </div>
-      </div>
-    </nav>
+</nav>
   );
 };
 
