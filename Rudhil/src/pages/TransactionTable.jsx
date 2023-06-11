@@ -52,7 +52,7 @@ const TransactionTable = ({ customers, updateTable }) => {
                 </td>
                 <td>
                   <button type='button' className='btn btn-warning m-2' style={{ width: '40px', height: '2rem', alignItems: 'center', justifySelf: 'center' }}>
-                    <Link to={`/prodUpdate/${item.id}`} className='text-decoration-none text-white justify-content-center'>
+                    <Link to={`/transacUpdate/${item.id}`} className='text-decoration-none text-white justify-content-center'>
                       <i className='text-dark fa fa-edit'></i>
                     </Link>
                   </button>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import Logo from '../pages/images/rudhil_logo.png';
+import { useNavigate } from "react-router-dom";
 import './navbar.css';
 
 const Navbar = () => {
@@ -39,7 +38,6 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light navbar-custom">
-    <i className="navbar-brand bi bi-justify fs-4"></i>
     <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
     aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>

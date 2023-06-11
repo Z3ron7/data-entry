@@ -7,7 +7,6 @@ import Coverage from "./pages/Coverage";
 import Transaction from "./pages/Transaction";
 import Login from "./buttons/Login";
 import Signup from "./buttons/Signup";
-import Navbar from "./component/Navbar";
 import Sidebar from "./component/Sidebar";
 import Home from "./pages/Home";
 import Admin from "./component/Admin";
@@ -15,6 +14,7 @@ import ProdList from "./pages/ProdList";
 import InsuredList from "./pages/InsuredList";
 import ProdUpdate from "./component/ProdUpdate";
 import InsuredUpdate from "./component/InsuredUpdate";
+import TransacUpdate from "./pages/TransacUpdate";
 import LoginAdmin from "./component/AdminLogin";
 import Logout from "./buttons/Logout";
 
@@ -95,6 +95,14 @@ function App() {
       <Route
         path="/InsuredUpdate/:id"
         element={isAuthenticated() ? <MainLayout><InsuredUpdate /></MainLayout> : <Navigate to="/" replace />}
+      />
+      <Route
+        path="/transacUpdate"
+        element={isAuthenticated() ? <MainLayout><TransacUpdate /></MainLayout> : <Navigate to="/" replace />}
+      /> 
+      <Route
+        path="/transacUpdate/:id"
+        element={isAuthenticated() ? <MainLayout><TransacUpdate /></MainLayout> : <Navigate to="/" replace />}
       />
 
       <Route path="*" element={<PageNotFound />} />

@@ -32,7 +32,7 @@ const CustomerEntry = () => {
   };
 
   return (
-    <div className="fluid bckgrnd">
+    <div className="fluid bckgrnd" style={{ backgroundColor: "rgb(228, 228, 215)"}}>
       <div className="d-flex justify-content-center align-items-center h-100">
         <div className="col-12">
           <div className="bg-white text-black my-2 entry-container">
