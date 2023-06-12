@@ -44,28 +44,42 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/add", async (req, res) => {
-    const { policy, name, transac_date, due_date } = req.body;
-  
-    const db = new Database();
-    const conn = db.connection;
-    const query = "INSERT INTO transaction (policy, name, transac_date, due_date) VALUES (?, ?, ?, ?)";
-    const values = [policy, name, transac_date, due_date];
-  
-    try {
-      await conn.connect();
-  
-      conn.query(query, values, (error, result) => {
-        if (error) throw error;
-        const { insertId } = result; // Get the ID of the newly inserted record
-        res.json({ success: true, message: "Successfully added", id: insertId });
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
-    } finally {
-      conn.end();
-    }
-  });
+  const { policy, name, transac_date, due_date } = req.body;
+
+  const db = new Database();
+  const conn = db.connection;
+  const query = "INSERT INTO transaction (policy, name, transac_date, due_date) VALUES (?, ?, ?, ?)";
+  const values = [policy, name, transac_date, due_date];
+
+  try {
+    await conn.connect();
+
+    // Check if the policy already exists in the database
+    const checkQuery = "SELECT * FROM transaction WHERE policy = ?";
+    const checkValues = [policy];
+    conn.query(checkQuery, checkValues, (error, result) => {
+      if (error) throw error;
+
+      if (result.length > 0) {
+        // Policy already exists, send error response
+        res.json({ success: false, message: "Policy number already exists!" });
+      } else {
+        // Policy does not exist, insert the record
+        conn.query(query, values, (error, result) => {
+          if (error) throw error;
+          const { insertId } = result; // Get the ID of the newly inserted record
+          res.json({ success: true, message: "Successfully added", id: insertId });
+
+          // Close the connection after both queries have been executed
+          conn.end();
+        });
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
   
   router.post("/add/list", async (req, res) => {
     const { list, id } = req.body; // Receive the ID from the request body
@@ -99,10 +113,10 @@ router.put('/update/:id', async (req, res) => {
   const conn = db.connection;
 
   const { id } = req.params;
-  const { Name } = req.body;
+  const { policy, name, transac_date, due_date, list } = req.body;
 
-  const query = "UPDATE customer_entry SET Name = ? WHERE id = ?";
-  const values = [Name, id];
+  const query = "UPDATE transaction SET policy = ?, name = ?, transac_date = ?, due_date = ?, list = ? WHERE id = ?";
+  const values = [policy, name, transac_date, due_date, list, id];
 
   try {
     await conn.connect();
@@ -130,7 +144,7 @@ router.delete('/delete/:id', async (req, res) => {
   const conn = db.connection;
 
   const { id } = req.params;
-  const query = "DELETE FROM customer_entry WHERE id = ?";
+  const query = "DELETE FROM transaction WHERE id = ?";
 
   try {
     await conn.connect();
@@ -153,7 +167,7 @@ router.get("/search/:name", async (req, res) => {
   const { name } = req.params;
   const db = new Database();
   const conn = db.connection;
-  const query = "SELECT * FROM customer_entry WHERE Name LIKE ?";
+  const query = "SELECT * FROM transaction WHERE Name LIKE ?";
 
   try {
     await conn.connect();
