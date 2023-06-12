@@ -49,8 +49,8 @@ const CustomerEntry = () => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <button className="btna lg mx-2 px-2 text-light" type="submit" style={{width:"90px"}}>
-                  Add +
+                <button className="btna text-light" type="submit" style={{width:"90px"}}>
+                  Save
                 </button>
               </form>
             </div>

@@ -35,7 +35,7 @@ function Login() {
   return (
     <>
 
-      <form className="mx-auto w-25 mt-5 my-5 border px-3 border-dark border-2 " style={{backgroundColor: "rgb(228, 228, 215)"}} onSubmit={onHandleLogin}>
+      <form className="mx-auto w-25 border px-3 shadow shadow- bg-light" style={{backgroundColor: "rgb(228, 228, 215)", marginTop: "30vh"}} onSubmit={onHandleLogin}>
         <div className="mb-2 ">
           <label htmlFor="exampleInputUsername" className="form-label">
             Username
@@ -50,22 +50,23 @@ function Login() {
             required
           />
         </div>
-        <div className="mb-2">
+        <div className="mb-2 ">
           <label htmlFor="exampleInputPassword1" className="form-label">
             Password
           </label>
-          <div className="input-group">
+          <div className="input" style={{ position: "relative" }}>
             <input
               type={showPassword ? "text" : "password"}
               className="form-control"
               placeholder="password"
-              id="exampleInputPassword1"
+              id="exampleInputPassword1" 
               onChange={(e) => setValues({ ...values, password: e.target.value })}
               required
             />
             <button
               type="button"
-              className="btn btn-outline-secondary"
+              className="btn btn-transparent"
+              style={{ position: "absolute", right: "0px", top: "50%", transform: "translateY(-50%)" }}
               onClick={togglePasswordVisibility}
             >
               {showPassword ? <i className='fa fa-eye-slash'></i> : <i className='fa fa-eye'></i>}

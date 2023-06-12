@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
-import DatePicker from "react-datepicker";
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import TransactionTable from "./TransactionTable";
@@ -68,22 +70,27 @@ const Transaction = () => {
         due_date,
         name: (name1 && name1.label) || (name2 && name2.label),
       });
-
-      const { id } = addResponse.data; // Get the ID from the response
-      setSelectedId(id); // Store the ID in the state
-
-      await axios.post("http://localhost:3000/api/transaction/add/list", {
-        list: coverage.map((option) => option.label),
-        id, // Pass the ID of the previously inserted record
-      });
-
-      updateTable();
-      setPolicy("");
-      setTransac_date(null);
-      setDue_date(null);
-      setCoverage([]);
-      setName1(null);
-      setName2(null);
+  
+      if (addResponse.data.success) {
+        const { id } = addResponse.data; // Get the ID from the response
+        setSelectedId(id); // Store the ID in the state
+  
+        await axios.post("http://localhost:3000/api/transaction/add/list", {
+          list: coverage.map((option) => option.label),
+          id, // Pass the ID of the previously inserted record
+        });
+  
+        updateTable();
+        setPolicy("");
+        setTransac_date(null);
+        setDue_date(null);
+        setCoverage([]);
+        setName1(null);
+        setName2(null);
+      } else {
+        // Policy already exists, display a window message to the user
+        alert(addResponse.data.message);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -175,37 +182,38 @@ const Transaction = () => {
                   />
                 </div>
                 <div className="form-control-sm mb-2">
-                  <DatePicker
-                    className="form-control-sm btn btn-light"
-                    selected={transac_date}
-                    placeholderText="Transaction date"
-                    id="transactionDate"
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={['DatePicker']}>
+                    <DatePicker className=" form-control-sm btn btn-light" 
+                    label="Transaction date" 
+                    slotProps={{ textField: { size: 'small' } }}
                     onChange={handleTransac_dateChange}
-                    value={transac_date}
-                  />
+                    value={due_date} />
+                  </DemoContainer>
+                </LocalizationProvider>
                 </div>
-                <div className="form-control-sm w-100">
-                  <DatePicker
-                    className=" form-control-sm btn btn-light"
-                    selected={due_date}
-                    placeholderText="Due date"
-                    id="dueDate"
+                <div className="form-control-sm">
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={['DatePicker']}>
+                    <DatePicker className=" form-control-sm btn btn-light" 
+                    label="Due date" 
+                    slotProps={{ textField: { size: 'small' } }}
                     onChange={handleDue_dateChange}
-                    value={due_date}
-                  />
+                    value={due_date} />
+                  </DemoContainer>
+                </LocalizationProvider>
                 </div>
-                <button className="btna lg mx-2 px-2 text-light" style={{ width: "90px" }} type="submit">
+                <button className="btna lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="submit">
                   Save
                 </button>
               </form>
-              Level 2: .col-8 .col-sm-5
             </div>
             <div className="col-4 col-sm-6 border border-dark border-2 d-flex flex-column">
               <form onSubmit={sendCustomern} style={{ borderRadius: "1rem", maxWidth: "800px" }} className="flex-grow-1">
                 <div className="dropdown-container w-100 py-2">
                   <Select
                     options={optionList}
-                    placeholder="Select name"
+                    placeholder="Category..."
                     isSearchable={true}
                     isMulti
                     value={coverage}

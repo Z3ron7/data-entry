@@ -8,16 +8,39 @@
   padding: 5px;
   background-color: green;
 }
-.btna:hover{
-  background:black;
-}
-.insurance-table {
-  width: 100%;
-  overflow: auto;
-  max-height: calc(5 * 2rem + 4px);
+
+.btna:hover {
+  background: black;
 }
 
-.insurance-table thead th {
+.display {
+  margin: 2rem 0;
+  margin-right: 18px;
+}
+
+.display .product-display-table {
+  width: 100%;
+  margin-left: 260px;
+}
+
+.display .product-display-table thead {
+  font-size: 2rem;
+  background: gray;
+}
+
+.display .product-display-table td {
+  padding: 1rem;
+  font-size: 2rem;
+  border-bottom: var(--border);
+}
+
+.transaction-table {
+  width: 100%;
+  overflow: auto;
+  max-height: calc(100vh - 250px); /* Adjust the max-height value based on your requirements */
+}
+
+.transaction-table thead th {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -38,4 +61,5 @@
     margin-left: 80px; /* Margin value for screens up to 576px wide */
   }
 }
+
 

@@ -50,7 +50,7 @@ const CustomerInsured = () => {
                   />
                 </div>
                 <button className="btna text-light" type="submit" style={{width:"90px"}}>
-                  Add +
+                  Save
                 </button>
               </form>
             </div>

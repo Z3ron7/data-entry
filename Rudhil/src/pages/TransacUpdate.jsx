@@ -23,15 +23,29 @@ const TransacUpdate = () => {
     try {
       const { data } = await axios.get(`http://localhost:3000/api/transaction/${id}`);
       setPolicy(data[0].policy);
-      setName1(data[0].name1);
-      setName2(data[0].name2);
       setTransac_date(new Date(data[0].transac_date));
       setDue_date(new Date(data[0].due_date));
-      setCategory(data[0].list.map((value) => ({ value, label: value })));
+      const listValues = data[0].list.split(',');
+      setCategory(listValues.map(value => ({ value, label: value })));
+  
+      const fetchedName = data[0].name;
+      const optionList1Exists = optionList1.find(option => option.label === fetchedName);
+      const optionList2Exists = optionList2.find(option => option.label === fetchedName);
+  
+      if (optionList1Exists) {
+        setName1(optionList1Exists);
+        setName2(null);
+      } else if (optionList2Exists) {
+        setName1(null);
+        setName2(optionList2Exists);
+      } else {
+        setName1({ value: fetchedName, label: fetchedName });
+        setName2(null);
+      }
     } catch (error) {
       console.log(error);
     }
-  };
+  };  
 
   useEffect(() => {
     handleData();
@@ -45,13 +59,19 @@ const TransacUpdate = () => {
       name: (name1 && name1.label) || (name2 && name2.label),
       transac_date: transac_date,
       due_date: due_date,
-      list: category.map((option) => option.value), // Extract values from category array
+      list: category.map(option => option.label).join(','), // Extract values from category array
     };
   
     try {
-      await axios.put(`http://localhost:3000/api/transaction/update/${id}`, updateDetails);
+      await axios.put(`http://localhost:3000/api/transaction/update/${id}`, {
+        policy: updateDetails.policy,
+        name: updateDetails.name,
+        transac_date: updateDetails.transac_date,
+        due_date: updateDetails.due_date,
+        list: updateDetails.list,
+      });
       await axios.post("http://localhost:3000/api/transaction/add/list", {
-        list: category.map((option) => option.value),
+        list: category.map((option) => option.label),
         id: selectedId, // Pass the ID of the previously inserted record
       });
   

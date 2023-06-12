@@ -38,15 +38,11 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light navbar-custom">
-    <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-    aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       {auth ? (
       <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
         <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a className="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {name}
           </a>
           <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
