@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './prodlist.css';
 
-const ProdList = ({ customers, updateTable }) => {
+const ProdList = ({ customers, updateTable, searchQuery }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -21,7 +21,9 @@ const ProdList = ({ customers, updateTable }) => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = customers.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = customers.filter((item) =>
+  item.Name.toLowerCase().includes(searchQuery.toLowerCase())
+).slice(indexOfFirstItem, indexOfLastItem);
 
   const totalPages = Math.ceil(customers.length / itemsPerPage);
 

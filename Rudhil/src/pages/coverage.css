@@ -1,9 +1,8 @@
 .coverage {
-    margin-left: 165px;
-    margin-right: -75px;
-    
+    margin-left: 175px;
+    margin-right: -60px;
   }
-  
+
   @media (max-width: 768px) {
     .coverage {
       margin-left: 15px; /* Margin value for screens up to 768px wide */
@@ -95,5 +94,16 @@
   
   .btn-add {
     width: 90px;
+  }
+
+  .coverage {
+    overflow: auto;
+    max-height: calc(5 * 2rem + 4px);
+  }
+  
+  .coverage thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
   

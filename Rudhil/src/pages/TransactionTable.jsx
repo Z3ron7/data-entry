@@ -3,7 +3,7 @@ import {React, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './transactionTable.css'
 
-const TransactionTable = ({ customers, updateTable }) => {
+const TransactionTable = ({ customers, updateTable, searchQuery  }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -21,7 +21,13 @@ const TransactionTable = ({ customers, updateTable }) => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = customers.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = customers.filter((item) =>
+  item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  item.policy.toString().includes(searchQuery.toLowerCase()) ||
+  item.transac_date.toString().includes(searchQuery.toLowerCase()) ||
+  item.due_date.toString().includes(searchQuery.toLowerCase()) ||
+  item.list.toLowerCase().includes(searchQuery.toLowerCase())
+).slice(indexOfFirstItem, indexOfLastItem);
 
   const totalPages = Math.ceil(customers.length / itemsPerPage);
 

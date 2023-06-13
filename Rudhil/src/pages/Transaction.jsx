@@ -20,6 +20,7 @@ const Transaction = () => {
   const [optionList1, setOptionList1] = useState([]);
   const [optionList2, setOptionList2] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState([]);
 
   const updateTable = useCallback(async () => {
     try {
@@ -165,14 +166,22 @@ const Transaction = () => {
     setName2(selectedOption);
   };
 
-  const handleSearchChange = async (name) => {
-    try {
-      const response = await axios.get(`http://localhost:3000/api/transaction/search/${name}`);
-      setSearchQuery(response.data);
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/transaction/search/${searchQuery}`);
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    if (searchQuery.length === 0 || searchQuery.length > 2) {
+      fetchData();
     }
-  };
+  }, [searchQuery]);
+  
+  
 
   return (
     <div className="fluid py-3" style={{ backgroundColor: "rgb(228, 228, 215)"}}>
@@ -261,31 +270,27 @@ const Transaction = () => {
       </div>
       <div className="row">
             <div className="col-md-12 d-flex justify-content-end">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" 
-            aria-expanded="false">Dropdown</button>
               {/* Search box */}
               <input
-              className="form-control "
-              type="search"
-              placeholder="Search name..."
-              aria-label="Search"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              style={{width: "30%"}}
-            />
-            <button className="mx-2 btn btn-outline-success" type="submit">
-              Search
-            </button>
+                className="form-control"
+                type="search"
+                placeholder="Search policy #, name, date or category..."
+                aria-label="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{ width: "40%", marginRight: '25px' }}
+              />
             </div>
           </div>
-      <TransactionTable
-        customers={customers.map((customer) => ({
-          ...customer,
-          transac_date: formatDate(new Date(customer.transac_date)),
-          due_date: formatDate(new Date(customer.due_date)),
-        }))}
-        updateTable={updateTable}
-      />
+          <TransactionTable
+  customers={customers.map((customer) => ({
+    ...customer,
+    transac_date: formatDate(new Date(customer.transac_date)),
+    due_date: formatDate(new Date(customer.due_date)),
+  }))}
+  updateTable={updateTable}
+  searchQuery={searchQuery}
+/>
     </div>
   );
 };

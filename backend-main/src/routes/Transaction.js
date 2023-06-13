@@ -176,28 +176,39 @@ router.get("/search/:category", async (req, res) => {
   const db = new Database();
   const conn = db.connection;
   let query;
+  let queryParams;
 
   switch (category) {
     case "policy":
-      query = "SELECT * FROM transaction WHERE policy LIKE ?";
+      let policyValue = parseInt(name);
+      if (isNaN(policyValue)) {
+        policyValue = 0; // Assign a default value if the name parameter is not a valid number
+      }
+      query = "SELECT * FROM transaction WHERE policy = ?";
+      queryParams = [policyValue];
       break;
     case "name":
       query = "SELECT * FROM transaction WHERE name LIKE ?";
+      queryParams = [`%${name}%`];
       break;
     case "transac_date":
-      query = "SELECT * FROM transaction WHERE transac_date LIKE ?";
+      query = "SELECT * FROM transaction WHERE transac_date = ?";
+      queryParams = [new Date(name)]; // Assuming transac_date is a Date object
       break;
     case "due_date":
-      query = "SELECT * FROM transaction WHERE due_date LIKE ?";
+      query = "SELECT * FROM transaction WHERE due_date = ?";
+      queryParams = [new Date(name)]; // Assuming due_date is a Date object
       break;
     default:
-      query = "SELECT * FROM transaction WHERE policy LIKE ? OR name LIKE ? OR transac_date LIKE ? OR due_date LIKE ?";
+      query = "SELECT * FROM transaction WHERE policy = ? OR name LIKE ? OR transac_date = ? OR due_date = ? OR list LIKE ?";
+      queryParams = [parseInt(name) || 0, `%${name}%`, new Date(name), new Date(name), `%${name}%`];
+      // Use parseInt(name) or 0 as the policy value if name is not a valid number
   }
 
   try {
     await conn.connect();
 
-    conn.query(query, [`%${name}%`, `%${name}%`, `%${name}%`, `%${name}%`], (error, rows) => {
+    conn.query(query, queryParams, (error, rows) => {
       if (error) throw error;
       res.json(rows);
     });
@@ -208,6 +219,7 @@ router.get("/search/:category", async (req, res) => {
     conn.end();
   }
 });
+
 
 
 module.exports = router;
