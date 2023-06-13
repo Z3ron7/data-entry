@@ -56,9 +56,9 @@ function Sidebar() {
                   <li className="nav-item">
                     <NavLink
                       exact
-                      to="/CustomerEntry"
-                      className={`nav-link text-black w-100 ${activeLink === '/CustomerEntry' ? 'active' : ''}`}
-                      onClick={() => handleLinkClick('/CustomerEntry')}
+                      to="/customer-entry"
+                      className={`nav-link text-black w-100 ${activeLink === '/customer-entry' ? 'active' : ''}`}
+                      onClick={() => handleLinkClick('/customer-entry')}
                       aria-current="page"
                     >
                       <i className="bi bi-person-vcard fs-5" />

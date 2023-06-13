@@ -48,6 +48,8 @@
 
 .content-main {
   margin-left: 250px;
+  margin-right: 10px;
+  height: 97vh;
 }
 
 @media (max-width: 768px) {
@@ -61,5 +63,7 @@
     margin-left: 80px; /* Margin value for screens up to 576px wide */
   }
 }
+
+
 
 

@@ -11,6 +11,6 @@
 
 @media (max-width: 576px) {
   .transaction-table {
-    margin-left: 10px; /* Margin value for screens up to 576px wide */
+    margin-left: 80px; /* Margin value for screens up to 576px wide */
   }
 }

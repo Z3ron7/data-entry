@@ -89,8 +89,8 @@ useEffect(() => {
   return (
     <div className="fluid" style={{backgroundColor: "rgb(228, 228, 215)"}}>
       <div className="coverage-container">
-    <div className="position-relevant container-md mt-3">
-      <div className="d-flex justify-content-center coverage-top" >
+    <div className="position-relevant container-sm">
+      <div className="col-md-12 d-flex justify-content-end coverage-top" >
         <button
           className={`btn btn-outline-success mx-2 m-5 ${activeSection === 'insurance' ? 'active' : ''}`}
           type="button"
@@ -113,8 +113,9 @@ useEffect(() => {
         >
           Insured
         </button>
-        <form className="d-flex justify-content-md-end" onSubmit={handleSearchSubmit}>
-          <div className="input-group mb-5">
+        <div className='containers' style={{marginLeft: '400px'}}>
+        <form className="d-flex justify-content-end" onSubmit={handleSearchSubmit}>
+          <div className="input-group">
             <input
               className="form-control "
               type="search"
@@ -122,13 +123,14 @@ useEffect(() => {
               aria-label="Search"
               value={search}
               onChange={handleSearchChange}
-              style={{width: "60%"}}
+              style={{width: "40vh"}}
             />
             <button className="mx-2 btn btn-outline-success" type="submit">
               Search
             </button>
           </div>
         </form>
+        </div>
       </div>
       <div className={`coverage collapse ${activeSection === 'insurance' ? 'show' : ''}`} id="collapseInsurance" >
         <h3>Insurance </h3>
@@ -145,7 +147,7 @@ useEffect(() => {
               <tr key={index}>
                 <th scope="row">{row.id}</th>
                 <td className="text-wrap">{row.Name}</td>
-                <td>
+                <td className='text-center'>
                   <button
                     type="button"
                     className="btn btn-warning m-2"
@@ -186,7 +188,7 @@ useEffect(() => {
               <tr key={index}>
                 <th scope="row">{row.id}</th>
                 <td className="text-wrap">{row.Name}</td>
-                <td>
+                <td className='text-center'>
                   <button
                     type="button"
                     className="btn btn-warning m-2"

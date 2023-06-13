@@ -53,8 +53,8 @@ function App() {
       <Route path="/loginadmin" element={<MainLayout><LoginAdmin /></MainLayout>} />
 
       <Route
-        path="/customerEntry"
-        element={isAuthenticated() ? <MainLayout><CustomerEntry /></MainLayout> : <Navigate to="/customerEntry" replace />}
+        path="/customer-entry"
+        element={isAuthenticated() ? <MainLayout><CustomerEntry /></MainLayout> : <Navigate to="/customer-entry" replace />}
       />
       <Route
         path="/customerInsured"

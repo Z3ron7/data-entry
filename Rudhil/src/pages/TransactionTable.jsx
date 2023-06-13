@@ -54,8 +54,8 @@ const TransactionTable = ({ customers, updateTable }) => {
                 <th scope='row text-center'>{item.id}</th>
                 <td className='text-center'>{item.policy}</td>
                 <td className='text-wrap'>{item.name}</td>
-                <td className='text-wrap'>{item.transac_date}</td>
-                <td className='text-wrap'>{item.due_date}</td>
+                <td className='text-center'>{item.transac_date}</td>
+                <td className='text-center'>{item.due_date}</td>
                 <td>
                   <div className="column-list">
                     {item.list.split(',').map((name, index) => (
@@ -96,6 +96,7 @@ const TransactionTable = ({ customers, updateTable }) => {
           </div>
         )}
       </div>
+      
     </section>
   );
 };

@@ -19,6 +19,7 @@ const Transaction = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [optionList1, setOptionList1] = useState([]);
   const [optionList2, setOptionList2] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const updateTable = useCallback(async () => {
     try {
@@ -64,6 +65,27 @@ const Transaction = () => {
   const sendCustomer = async (event) => {
     event.preventDefault();
     try {
+      // Check if policy number, name, transac_date, or due_date is null
+      if (!policy) {
+        alert("Please input a policy number!");
+        return;
+      }
+
+      if (!name1 && !name2) {
+        alert("Please select a name!");
+        return;
+      }
+  
+      if (!transac_date) {
+        alert("Please select a transaction date!");
+        return;
+      }
+  
+      if (!due_date) {
+        alert("Please select a due date!");
+        return;
+      }
+  
       const addResponse = await axios.post("http://localhost:3000/api/transaction/add", {
         policy,
         transac_date,
@@ -88,7 +110,7 @@ const Transaction = () => {
         setName1(null);
         setName2(null);
       } else {
-        // Policy already exists, display a window message to the user
+        // Policy already exists or fields were not filled, display an alert message to the user
         alert(addResponse.data.message);
       }
     } catch (error) {
@@ -143,12 +165,21 @@ const Transaction = () => {
     setName2(selectedOption);
   };
 
+  const handleSearchChange = async (name) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/transaction/search/${name}`);
+      setSearchQuery(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="fluid py-3" style={{ backgroundColor: "rgb(228, 228, 215)"}}>
       <div className="row">
         <div className="col-sm-3 "></div>
         <div className="col-md-8">
-          <div className="row border">
+          <div className="row border mb-4">
             <div className="col-8 col-sm-6 border border-dark border-2">
               <form onSubmit={sendCustomer} style={{ borderRadius: "1rem" }}>
                 <div className="mb-2 input-group-sm w-100 mt-2">
@@ -188,7 +219,7 @@ const Transaction = () => {
                     label="Transaction date" 
                     slotProps={{ textField: { size: 'small' } }}
                     onChange={handleTransac_dateChange}
-                    value={due_date} />
+                    value={transac_date} />
                   </DemoContainer>
                 </LocalizationProvider>
                 </div>
@@ -228,6 +259,25 @@ const Transaction = () => {
           </div>
         </div>
       </div>
+      <div className="row">
+            <div className="col-md-12 d-flex justify-content-end">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" 
+            aria-expanded="false">Dropdown</button>
+              {/* Search box */}
+              <input
+              className="form-control "
+              type="search"
+              placeholder="Search name..."
+              aria-label="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              style={{width: "30%"}}
+            />
+            <button className="mx-2 btn btn-outline-success" type="submit">
+              Search
+            </button>
+            </div>
+          </div>
       <TransactionTable
         customers={customers.map((customer) => ({
           ...customer,

@@ -57,6 +57,23 @@ const CustomerInsured = () => {
           </div>
         </div>
       </div>
+      <div className="row mb-2">
+            <div className="col-md-12 d-flex justify-content-end">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" 
+            aria-expanded="false">Dropdown</button>
+              {/* Search box */}
+              <input
+              className="form-control "
+              type="search"
+              placeholder="Search name..."
+              aria-label="Search"
+              style={{width: "30%"}}
+            />
+            <button className="mx-2 btn btn-outline-success" type="submit">
+              Search
+            </button>
+            </div>
+          </div>
       <InsuredList customers={customerinsured} updateTable={updateTable} />
     </div>
   );

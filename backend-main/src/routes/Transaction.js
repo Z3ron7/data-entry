@@ -54,6 +54,12 @@ router.post("/add", async (req, res) => {
   try {
     await conn.connect();
 
+    // Check if the name, transac_date, or due_date is null
+    if (!name || !transac_date || !due_date) {
+      res.json({ success: false, message: "Please fill in the fields!" });
+      return;
+    }
+
     // Check if the policy already exists in the database
     const checkQuery = "SELECT * FROM transaction WHERE policy = ?";
     const checkValues = [policy];
@@ -80,6 +86,7 @@ router.post("/add", async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
   
   router.post("/add/list", async (req, res) => {
     const { list, id } = req.body; // Receive the ID from the request body
@@ -163,16 +170,34 @@ router.delete('/delete/:id', async (req, res) => {
 });
 
 // Search route
-router.get("/search/:name", async (req, res) => {
-  const { name } = req.params;
+router.get("/search/:category", async (req, res) => {
+  const { category } = req.params;
+  const { name } = req.query;
   const db = new Database();
   const conn = db.connection;
-  const query = "SELECT * FROM transaction WHERE Name LIKE ?";
+  let query;
+
+  switch (category) {
+    case "policy":
+      query = "SELECT * FROM transaction WHERE policy LIKE ?";
+      break;
+    case "name":
+      query = "SELECT * FROM transaction WHERE name LIKE ?";
+      break;
+    case "transac_date":
+      query = "SELECT * FROM transaction WHERE transac_date LIKE ?";
+      break;
+    case "due_date":
+      query = "SELECT * FROM transaction WHERE due_date LIKE ?";
+      break;
+    default:
+      query = "SELECT * FROM transaction WHERE policy LIKE ? OR name LIKE ? OR transac_date LIKE ? OR due_date LIKE ?";
+  }
 
   try {
     await conn.connect();
 
-    conn.query(query, [`%${name}%`], (error, rows) => {
+    conn.query(query, [`%${name}%`, `%${name}%`, `%${name}%`, `%${name}%`], (error, rows) => {
       if (error) throw error;
       res.json(rows);
     });
@@ -183,5 +208,6 @@ router.get("/search/:name", async (req, res) => {
     conn.end();
   }
 });
+
 
 module.exports = router;
