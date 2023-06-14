@@ -68,22 +68,22 @@ const Transaction = () => {
     try {
       // Check if policy number, name, transac_date, or due_date is null
       if (!policy) {
-        alert("Please input a policy number!");
+        alert("Input a policy number!");
         return;
       }
 
       if (!name1 && !name2) {
-        alert("Please select a name!");
+        alert("Select a name!");
         return;
       }
   
       if (!transac_date) {
-        alert("Please select a transaction date!");
+        alert("Select a transaction date!");
         return;
       }
   
       if (!due_date) {
-        alert("Please select a due date!");
+        alert("Select a due date!");
         return;
       }
   
@@ -224,8 +224,8 @@ const Transaction = () => {
                 <div className="form-control-sm mb-2">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DemoContainer components={['DatePicker']}>
+                  <label className="d-flex py-2" style={{fontSize:'15px', color:'gray'}}>Transaction date:</label>
                     <DatePicker className=" form-control-sm btn btn-light" 
-                    label="Transaction date" 
                     slotProps={{ textField: { size: 'small' } }}
                     onChange={handleTransac_dateChange}
                     value={transac_date} />
@@ -235,8 +235,8 @@ const Transaction = () => {
                 <div className="form-control-sm">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DemoContainer components={['DatePicker']}>
-                    <DatePicker className=" form-control-sm btn btn-light" 
-                    label="Due date" 
+                  <label className="d-flex py-2" style={{marginRight: "48px", fontSize:'15px', color:'gray'}}>Due date:</label>
+                    <DatePicker className=" form-control-sm btn btn-light"
                     slotProps={{ textField: { size: 'small' } }}
                     onChange={handleDue_dateChange}
                     value={due_date} />

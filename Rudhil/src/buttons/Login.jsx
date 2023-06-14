@@ -40,11 +40,13 @@ function Login() {
         <div>
           <img className="ms-2 mx-3" alt='Rudhil logo' src={Logo} style={{ width: "240px", height: "230px" }} />
         </div>
-        <form className="mx-auto w-25 border px-3 shadow shadow- bg-light" style={{ backgroundColor: "rgb(228, 228, 215)", marginTop: "30px" }} onSubmit={onHandleLogin}>
-          <div className="mb-2">
-            <label htmlFor="exampleInputUsername" className="form-label">
-              Username
-            </label>
+        <form className="mx-auto px-3 shadow" style={{ backgroundColor: "#d3d3d3", marginTop: "30px", width: '55vh' }} onSubmit={onHandleLogin}>
+          <div className="mb-2 ">
+            <div className="login-top text-center">
+              <label className="form-label" style={{ fontSize: "40px", fontWeight:'bold' }}>
+                Login 
+              </label>
+            </div>
             <input
               type="username"
               className="form-control"
@@ -56,9 +58,6 @@ function Login() {
             />
           </div>
           <div className="mb-2">
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Password
-            </label>
             <div className="input" style={{ position: "relative" }}>
               <input
                 type={showPassword ? "text" : "password"}

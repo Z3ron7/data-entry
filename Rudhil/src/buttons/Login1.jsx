@@ -37,8 +37,8 @@ function Login() {
 
       <form className="mx-auto w-25 border px-3 shadow shadow- bg-light" style={{backgroundColor: "rgb(228, 228, 215)", marginTop: "30vh"}} onSubmit={onHandleLogin}>
         <div className="mb-2 ">
-          <label htmlFor="exampleInputUsername" className="form-label">
-            Username
+          <label className="form-label mx-auto">
+            Login
           </label>
           <input
             type="username"
@@ -51,9 +51,6 @@ function Login() {
           />
         </div>
         <div className="mb-2 ">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-          </label>
           <div className="input" style={{ position: "relative" }}>
             <input
               type={showPassword ? "text" : "password"}
