@@ -180,8 +180,15 @@ const Transaction = () => {
       fetchData();
     }
   }, [searchQuery]);
-  
-  
+
+  const handleClear = () => {
+    setPolicy("");
+    setTransac_date(null);
+    setDue_date(null);
+    setCoverage([]);
+    setName1(null);
+    setName2(null);
+  };
 
   return (
     <div className="fluid py-3" style={{ backgroundColor: "rgb(228, 228, 215)"}}>
@@ -191,11 +198,11 @@ const Transaction = () => {
           <div className="row border mb-4">
             <div className="col-8 col-sm-6 border border-dark border-2">
               <form onSubmit={sendCustomer} style={{ borderRadius: "1rem" }}>
-                <div className="mb-2 input-group-sm w-100 mt-2">
+                <div className="mb-2 input-group w-100 mt-2">
                   <input
                     className="lg form-control"
-                    id="name"
-                    placeholder="Policy #"
+                    id="policy"
+                    placeholder="Policy number"
                     type="text"
                     value={policy}
                     onChange={(e) => setPolicy(e.target.value)}
@@ -224,7 +231,7 @@ const Transaction = () => {
                 <div className="form-control-sm mb-2">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DemoContainer components={['DatePicker']}>
-                  <label className="d-flex py-2" style={{fontSize:'15px', color:'gray'}}>Transaction date:</label>
+                  <label className="d-flex py-2" style={{fontSize:'15px', color:'#696969'}}>Transaction date:</label>
                     <DatePicker className=" form-control-sm btn btn-light" 
                     slotProps={{ textField: { size: 'small' } }}
                     onChange={handleTransac_dateChange}
@@ -235,7 +242,7 @@ const Transaction = () => {
                 <div className="form-control-sm">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DemoContainer components={['DatePicker']}>
-                  <label className="d-flex py-2" style={{marginRight: "48px", fontSize:'15px', color:'gray'}}>Due date:</label>
+                  <label className="d-flex py-2" style={{marginRight: "48px", fontSize:'15px', color:'#696969'}}>Due date:</label>
                     <DatePicker className=" form-control-sm btn btn-light"
                     slotProps={{ textField: { size: 'small' } }}
                     onChange={handleDue_dateChange}
@@ -243,9 +250,14 @@ const Transaction = () => {
                   </DemoContainer>
                 </LocalizationProvider>
                 </div>
-                <button className="btna lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="submit">
-                  Save
-                </button>
+                <div className="d-flex justify-content-between">
+                  <button className="btna lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="submit">
+                    Save
+                  </button>
+                  <button className="btna lg mx-2 px-2 text-light mb-2" style={{ backgroundColor: 'red', width: "90px" }} type="button" onClick={() => handleClear()}>
+                    Clear
+                  </button>
+                </div>
               </form>
             </div>
             <div className="col-4 col-sm-6 border border-dark border-2 d-flex flex-column">
@@ -260,7 +272,7 @@ const Transaction = () => {
                     onChange={handleSelect0}
                   />
                 </div>
-                <button className="btna lg mx-2 px-2 text-light" style={{ width: "90px" }} type="submit">
+                <button className="btna lg mx-2 mx-auto px-2 text-light" style={{ width: "90px" }} type="submit">
                   Add
                 </button>
               </form>
@@ -272,7 +284,7 @@ const Transaction = () => {
             <div className="col-md-12 d-flex justify-content-end">
               {/* Search box */}
               <input
-                className="form-control"
+                className="form-control shadow"
                 type="search"
                 placeholder="Search policy #, name, date or category..."
                 aria-label="Search"

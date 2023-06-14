@@ -139,13 +139,13 @@ const Coverage = () => {
               <form className="d-flex justify-content-end" onSubmit={handleSearchSubmit}>
                 <div className="input-group">
                   <input
-                    className="form-control "
+                    className="form-control shadow"
                     type="search"
                     placeholder="Search name..."
                     aria-label="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    style={{ width: '40vh' }}
+                    style={{ width: '50vh' }}
                   />
                 </div>
               </form>

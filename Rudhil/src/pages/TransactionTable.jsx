@@ -45,19 +45,19 @@ const TransactionTable = ({ customers, updateTable, searchQuery  }) => {
         <table className='table table-light table-striped table-bordered border-secondary'>
           <thead className='table-dark'>
             <tr>
-              <th scope='row'>Id</th>
-              <th>Policy #</th>
-              <th>Names</th>
-              <th>Transaction Date</th>
-              <th>Due Date</th>
-              <th>Category</th>
+              <th className='text-center'>ID</th>
+              <th className="text-center">Policy #</th>
+              <th className="text-center">Names</th>
+              <th className="text-center">Transaction Date</th>
+              <th className="text-center">Due Date</th>
+              <th className="text-center">Category</th>
               <th className="text-center">Action</th>
             </tr>
           </thead>
           <tbody>
             {currentItems.map((item) => (
               <tr key={item.id}>
-                <th scope='row text-center'>{item.id}</th>
+                <th className='text-center'>{item.id}</th>
                 <td className='text-center'>{item.policy}</td>
                 <td className='text-wrap'>{item.name}</td>
                 <td className='text-center'>{item.transac_date}</td>

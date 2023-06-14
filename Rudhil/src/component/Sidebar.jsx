@@ -20,13 +20,13 @@ function Sidebar() {
   };
 
   return (
-    <div className="m-2 p-2">
+    <div className="mx-0">
       <div className="row d-flex">
         <div className="col-auto col-sm-2 bg-white flex-column justify-content-start min-vh-100">
-          <div className="mt-3">
-            <a href="" className="text-decoration-none d-flex align-items-center text-black d-none d-sm-inline">
-              <img className="ms-2 mx-3" alt='Rudhil logo' src={Logo} style={{width:"55px", height: "50px"}}/>
-              <span className="fs-4">Rudhil</span>
+          <div className="mt-2">
+            <a href="/customer-entry" className="text-decoration-none d-flex align-items-center text-black d-none d-sm-inline">
+              <img className="ms-2 mx-3" alt='Rudhil logo' src={Logo} style={{width:"55px", height: "51px"}}/>
+              <span className="fs-4" style={{fontWeight: 'bold'}}>Rudhil</span>
             </a>
             <hr className="text-black d-none d-sm-block font-weight-bold" />
             <ul className="nav nav-pills flex-column" id="parentM">

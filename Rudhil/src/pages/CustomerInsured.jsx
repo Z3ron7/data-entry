@@ -74,11 +74,11 @@ const CustomerInsured = () => {
           </div>
         </div>
       </div>
-      <div className="row mb-2">
+      <div className="row mb-2 mb-4 mt-2">
             <div className="col-md-12 d-flex justify-content-end">
               {/* Search box */}
               <input
-              className="form-control "
+              className="form-control shadow"
               type="search"
               placeholder="Search name..."
               aria-label="Search"
