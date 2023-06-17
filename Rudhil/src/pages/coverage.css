@@ -1,32 +1,6 @@
 .coverage {
-    margin-left: 175px;
-    margin-right: -60px;
+    margin-right: -35px;
   }
-
-  @media (max-width: 768px) {
-    .coverage {
-      margin-left: 15px; /* Margin value for screens up to 768px wide */
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .coverage {
-      margin-left: 10px; /* Margin value for screens up to 576px wide */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .coverage-top {
-      margin-left: 15px; /* Margin value for screens up to 768px wide */
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .coverage-top {
-      margin-left: 10px; /* Margin value for screens up to 576px wide */
-    }
-  }
-  
   
   .coverage-container .coverage {
     display: flex;
@@ -38,44 +12,20 @@
     margin: 0.5rem;
   }
   
-  @media (max-width: 576px) {
-    .coverage-container .coverage .btn {
-      width: 100%;
-      margin-bottom: 0.5rem;
-    }
-  }
+ 
   
   .input-group {
     margin-top: 45px;
   }
   
-  @media (max-width: 576px) {
-    .input-group {
-      flex-direction: column;
-      width:50%;
-    }
-  }
-  
   .input-group .form-control {
     width: 300px;
   }
-  
-  @media (max-width: 576px) {
-    .input-group .form-control {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
-  
+ 
   .input-group .btn-outline-success {
     width: 100px;
   }
   
-  @media (max-width: 576px) {
-    .input-group .btn-outline-success {
-      width: 35%;
-    }
-  }
   .fluid {
     width: 100%;
   }
@@ -99,11 +49,18 @@
   .coverage {
     overflow: auto;
     max-height: calc(5 * 2rem + 4px);
+    z-index: 1;
+    overflow-x: hidden;
   }
   
   .coverage thead th {
     position: sticky;
     top: 0;
     z-index: 1;
+  }
+  
+  .wider-input {
+    width: 75%;
+    max-width: 75vh;
   }
   

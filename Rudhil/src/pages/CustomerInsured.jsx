@@ -50,11 +50,14 @@ const CustomerInsured = () => {
 
   return (
     <div className="fluid bckgrnd" style={{ backgroundColor: "rgb(228, 228, 215)"}}>
-      <div className="d-flex justify-content-center align-items-center h-100">
+      <div className="d-flex justify-content-center">
+      <div className='row w-75'>
+          <div className='col-2'></div>
+        <div className='col'>
         <div className="col-12">
-          <div className="bg-white text-black my-2 insured-container">
+          <div className="bg-white text-black my-2 entry-container">
             <div className="p-1 d-flex flex-column align-items-right">
-              <h5 className="fw-bold mb-4 text-uppercase">Insured Customer</h5>
+              <h5 className="fw-bold mb-4 text-uppercase">Customer Insured</h5>
               <form onSubmit={sendCustomer} className="entry-form">
                 <div className="mb-4 input-group-sm">
                   <input
@@ -64,6 +67,7 @@ const CustomerInsured = () => {
                     type="text"
                     value={Name}
                     onChange={(e) => setName(e.target.value)}
+                    autoComplete="off"
                   />
                 </div>
                 <button className="btna text-light" type="submit" style={{width:"90px"}}>
@@ -74,8 +78,11 @@ const CustomerInsured = () => {
           </div>
         </div>
       </div>
-      <div className="row mb-2 mb-4 mt-2">
-            <div className="col-md-12 d-flex justify-content-end">
+      
+          </div>
+          </div>
+          <div className="mb-4 mt-2">
+            <div className="col-12 d-flex justify-content-end">
               {/* Search box */}
               <input
               className="form-control shadow"

@@ -36,8 +36,12 @@ const InsuredList = ({ customers, updateTable, searchQuery }) => {
   };
 
   return (
-    <section className='content-main'>
+    <section className='container-fluid'>
         <div className='insured-table min-vh-100'>
+        <div className='row'>
+          <div className='col-2'></div>
+        
+        <div className='col'>
           <table className='table table-light table-striped table-bordered border-secondary'>
             <thead className='table-dark'>
               <tr>
@@ -81,6 +85,8 @@ const InsuredList = ({ customers, updateTable, searchQuery }) => {
             </button>
           </div>
         )}
+        </div>
+        </div>
         </div>
     </section>
   );

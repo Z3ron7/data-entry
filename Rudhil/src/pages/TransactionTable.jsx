@@ -40,9 +40,12 @@ const TransactionTable = ({ customers, updateTable, searchQuery  }) => {
   };
 
   return (
-    <section className='content-main'>
-      <div className='display transaction-table min-vh-100'>
-        <table className='table table-light table-striped table-bordered border-secondary'>
+    <section className='container-fluid'>
+      <div className='transaction-table min-vh-100'>
+      <div className='row'>
+          <div className='col-2'></div>
+        <div className='col'>
+        <table className='table table-light table-striped table-bordered col border-secondary'>
           <thead className='table-dark'>
             <tr>
               <th className='text-center'>ID</th>
@@ -91,6 +94,7 @@ const TransactionTable = ({ customers, updateTable, searchQuery  }) => {
             ))}
           </tbody>
         </table>
+        <div className='mb-3'>
         {customers.length > itemsPerPage && (
           <div className='pagination justify-content-center mb-4'>
             <button type='button' className='btn btn-primary mx-2' disabled={currentPage === 1} onClick={handlePreviousPage}>
@@ -101,8 +105,10 @@ const TransactionTable = ({ customers, updateTable, searchQuery  }) => {
             </button>
           </div>
         )}
+        </div>
       </div>
-      
+      </div>
+      </div>
     </section>
   );
 };

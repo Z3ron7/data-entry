@@ -192,11 +192,12 @@ const Transaction = () => {
 
   return (
     <div className="fluid py-3" style={{ backgroundColor: "rgb(228, 228, 215)"}}>
-      <div className="row">
-        <div className="col-sm-3 "></div>
-        <div className="col-md-8">
+      <div className="d-flex justify-content-center">
+      <div className="row w-100">
+        <div className="col-3"></div>
+        <div className="col-8">
           <div className="row border mb-4">
-            <div className="col-8 col-sm-6 border border-dark border-2">
+            <div className="col-6 col-sm-6 border border-dark border-2">
               <form onSubmit={sendCustomer} style={{ borderRadius: "1rem" }}>
                 <div className="mb-2 input-group w-100 mt-2">
                   <input
@@ -206,6 +207,7 @@ const Transaction = () => {
                     type="text"
                     value={policy}
                     onChange={(e) => setPolicy(e.target.value)}
+                    autoComplete='off'
                   />
                 </div>
                 <div className="dropdown-container w-100 py-2">
@@ -280,7 +282,8 @@ const Transaction = () => {
           </div>
         </div>
       </div>
-      <div className="row">
+      </div>
+      <div className="mb-4 mt-2">
             <div className="col-md-12 d-flex justify-content-end">
               {/* Search box */}
               <input
@@ -290,7 +293,7 @@ const Transaction = () => {
                 aria-label="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                style={{ width: "40%", marginRight: '25px' }}
+                style={{ width: "40%", marginRight: '26px' }}
               />
             </div>
           </div>

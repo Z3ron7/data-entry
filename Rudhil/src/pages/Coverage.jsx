@@ -6,7 +6,6 @@ import './coverage.css';
 const Coverage = () => {
   const [customerEntryData, setCustomerEntryData] = useState([]);
   const [customerInsuredData, setCustomerInsuredData] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
   const [activeSection, setActiveSection] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -85,9 +84,7 @@ const Coverage = () => {
   }, []);
 
   const displayData =
-    searchResults.length > 0
-      ? searchResults
-      : activeSection === 'insurance'
+        activeSection === 'insurance'
       ? customerEntryData
       : activeSection === 'insured'
       ? customerInsuredData
@@ -110,9 +107,12 @@ const Coverage = () => {
   };
 
   return (
-    <div className="fluid" style={{ backgroundColor: 'rgb(228, 228, 215)' }}>
+    <div className="container-fluid" style={{ backgroundColor: 'rgb(228, 228, 215)' }}>
         <div className="container-sm min-vh-100">
-          <div className="col-md-12 d-flex justify-content-end coverage-top">
+          <div className="col-md-12 coverage-top">
+        <div className='row'>
+          <div className='col-md-5' style={{marginLeft: '65px'}}></div>
+        <div className='col'>
             <button
               className={`btn btn-outline-success mx-2 m-5 ${activeSection === 'insurance' ? 'active' : ''}`}
               type="button"
@@ -126,6 +126,7 @@ const Coverage = () => {
             </button>
             <button
               className={`btn btn-outline-success mx-2 m-5  ${activeSection === 'insured' ? 'active' : ''}`}
+              style={{width:'13vh'}}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseInsured"
@@ -135,7 +136,10 @@ const Coverage = () => {
             >
               Insured
             </button>
-            <div className="containers" style={{ marginLeft: '400px' }}>
+            <div className="containers" style={{ marginLeft: '150px' }}>
+            <div className='row'>
+          <div className='col-2'></div>
+        <div className='col'>
               <form className="d-flex justify-content-end" onSubmit={handleSearchSubmit}>
                 <div className="input-group">
                   <input
@@ -145,14 +149,22 @@ const Coverage = () => {
                     aria-label="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    style={{ width: '50vh' }}
+                    style={{width:'360px', maxWidth: '100vh' }}
                   />
                 </div>
               </form>
             </div>
           </div>
-          <div className={`coverage collapse min-vh-100 ${activeSection === 'insurance' ? 'show' : ''}`} id="collapseInsurance">
-            <h3 className='justify-content-center d-flex'>Insurance</h3>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div className={`collapse container-fluid ${activeSection === 'insurance' ? 'show' : ''}`} id="collapseInsurance" >
+          <h3 className='col-4 col-md-12 justify-content-center d-flex' style={{marginLeft:'10vh'}}>Insurance</h3>
+          <div className="coverage min-vh-100" >
+          <div className='row'>
+          <div className='col-2'></div>
+        <div className='col'>
             <table className="table table-light table-striped table-bordered border-secondary">
               <thead className="table-dark">
                 <tr>
@@ -219,9 +231,16 @@ const Coverage = () => {
               </div>
             )}
           </div>
-          <div className={`coverage collapse min-vh-100 ${activeSection === 'insured' ? 'show' : ''}`} id="collapseInsured">
-            <h3 className='justify-content-center d-flex'>Insured customer</h3>
-            <table className="table table-light table-striped table-bordered border-secondary">
+          </div>
+        </div>
+        </div>
+        <div className={`collapse container-fluid ${activeSection === 'insured' ? 'show' : ''}`} id="collapseInsured" >
+        <h3 className='col-4 col-md-12 justify-content-center d-flex' style={{marginLeft:'10vh'}}>Insured customer</h3>
+          <div className="coverage min-vh-100 ">
+          <div className='row'>
+          <div className='col-2'></div>
+        <div className='col'>
+                <table className="table table-light table-striped table-bordered border-secondary">
               <thead className="table-dark">
                 <tr>
                   <th scope="row">Customer_Id</th>
@@ -286,7 +305,10 @@ const Coverage = () => {
                 </button>
               </div>
             )}
+            </div>
           </div>
+        </div>
+        </div>
         </div>
       </div>
   );
