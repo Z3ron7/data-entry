@@ -6,6 +6,8 @@ import axios from "axios";
 const CustomerEntry = () => {
   const [Name, setName] = useState("");
   const [customers, setCustomers] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [data, setData] = useState([]);
 
   const updateTable = useCallback(async () => {
     try {
@@ -31,15 +33,33 @@ const CustomerEntry = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/customer_entry/search/${searchQuery}`);
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    if (searchQuery.length === 0 || searchQuery.length > 2) {
+      fetchData();
+    }
+  }, [searchQuery]);
+
   return (
     <div className="fluid bckgrnd" style={{ backgroundColor: "rgb(228, 228, 215)"}}>
-      <div className="d-flex justify-content-center align-items-center h-100">
+      <div className="d-flex justify-content-center">
+      <div className='row w-75'>
+          <div className='col-2'></div>
+        <div className='col'>
         <div className="col-12">
           <div className="bg-white text-black my-2 entry-container">
             <div className="p-1 d-flex flex-column align-items-right">
               <h5 className="fw-bold mb-4 text-uppercase">Customer</h5>
               <form onSubmit={sendCustomer} className="entry-form">
-                <div className="mb-4 input-group-sm">
+              <div className="mb-4 input-group-sm">
                   <input
                     className="lg form-control"
                     id="name"
@@ -47,17 +67,35 @@ const CustomerEntry = () => {
                     type="text"
                     value={Name}
                     onChange={(e) => setName(e.target.value)}
+                    autoComplete="off"
                   />
                 </div>
-                <button className="btna lg mx-2 px-2 text-light" type="submit" style={{width:"90px"}}>
-                  Add +
+                <button className="btna text-light" type="submit" style={{width:"90px"}}>
+                  Save
                 </button>
               </form>
             </div>
           </div>
         </div>
       </div>
-      <ProdList customers={customers} updateTable={updateTable} />
+      
+          </div>
+          </div>
+          <div className="mb-4 mt-2">
+            <div className="col-12 d-flex justify-content-end">
+              {/* Search box */}
+              <input
+              className="form-control shadow"
+              type="search"
+              placeholder="Search name..."
+              aria-label="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{width: "30%", marginRight: '26px'}}
+            />
+            </div>
+          </div>
+      <ProdList customers={customers} updateTable={updateTable} searchQuery={searchQuery} />
     </div>
   );
 };

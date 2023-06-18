@@ -53,8 +53,8 @@ function App() {
       <Route path="/loginadmin" element={<MainLayout><LoginAdmin /></MainLayout>} />
 
       <Route
-        path="/customerEntry"
-        element={isAuthenticated() ? <MainLayout><CustomerEntry /></MainLayout> : <Navigate to="/customerEntry" replace />}
+        path="/customer-entry"
+        element={isAuthenticated() ? <MainLayout><CustomerEntry /></MainLayout> : <Navigate to="/customer-entry" replace />}
       />
       <Route
         path="/customerInsured"
@@ -97,11 +97,11 @@ function App() {
         element={isAuthenticated() ? <MainLayout><InsuredUpdate /></MainLayout> : <Navigate to="/" replace />}
       />
       <Route
-        path="/transacUpdate"
+        path="/TransacUpdate"
         element={isAuthenticated() ? <MainLayout><TransacUpdate /></MainLayout> : <Navigate to="/" replace />}
       /> 
       <Route
-        path="/transacUpdate/:id"
+        path="/TransacUpdate/:id"
         element={isAuthenticated() ? <MainLayout><TransacUpdate /></MainLayout> : <Navigate to="/" replace />}
       />
 
