@@ -1,17 +1,16 @@
 .transaction-table {
-  margin-left: 250px;
-  margin-right: 20px;
-}
-
-@media (max-width: 768px) {
-  .transaction-table {
-    margin-left: 15px; /* Margin value for screens up to 768px wide */
+    margin-left: 250px;
+    margin-right: 20px;
   }
-}
-
-@media (max-width: 576px) {
-  .transaction-table {
-    margin-left: 80px; /* Margin value for screens up to 576px wide */
+  
+  @media (max-width: 768px) {
+    .transaction-table {
+      margin-left: 15px; /* Margin value for screens up to 768px wide */
+    }
   }
-}
-
+  
+  @media (max-width: 576px) {
+    .transaction-table {
+      margin-left: 10px; /* Margin value for screens up to 576px wide */
+    }
+  }

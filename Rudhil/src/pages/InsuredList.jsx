@@ -40,6 +40,7 @@ const InsuredList = ({ customers, updateTable, searchQuery }) => {
         <div className='insured-table min-vh-100'>
         <div className='row'>
           <div className='col-2'></div>
+        
         <div className='col'>
           <table className='table table-light table-striped table-bordered border-secondary'>
             <thead className='table-dark'>

@@ -11,16 +11,43 @@
 .btna:hover{
   background:black;
 }
-.insurance-table {
-  width: 100%;
-  overflow: auto;
-  max-height: calc(5 * 2rem + 4px);
-  overflow-x: hidden;
+.product-display {
+    margin: 2rem 0;
+    overflow-y: scroll;
+}
+.product-display .product-display-table{
+    width: 100%;
+    margin-left: 260px;
+}
+.product-display .product-display-table thead{
+    font-size: 2rem;
+    background: gray;
+}.product-display .product-display-table td{
+    padding: 1rem;
+    font-size: 2rem;
+    border-bottom: var(--border);
+}
+.form-control2 {
+    margin: 0 60px;
+}
+.form-control3 {
+    width: 750px;
+    margin-left:50%;
+    float: right;
 }
 
-.insurance-table thead th {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
+.content-main {
+    margin-left: 250px;
+  }
+  
+  @media (max-width: 768px) {
+    .content-main {
+      margin-left: 15px; /* Margin value for screens up to 768px wide */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .content-main {
+      margin-left: 80px; /* Margin value for screens up to 576px wide */
+    }
+  }

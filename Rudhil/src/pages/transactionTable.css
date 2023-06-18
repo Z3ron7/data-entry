@@ -1,46 +1,45 @@
 .btna {
-    display: block;
-    width: 25%;
-    cursor: pointer;
-    border-radius: .5rem;
-    margin-top: 1rem;
-    font-size: 15px;
-    padding: 5px;
-    background-color: green;
-  }
-  
-  .btna:hover {
-    background: black;
-  }
+  display: block;
+  width: 25%;
+  cursor: pointer;
+  border-radius: .5rem;
+  margin-top: 1rem;
+  font-size: 15px;
+  padding: 5px;
+  background-color: green;
+}
 
-  .btns {
-    display: block;
-    width: 25%;
-    cursor: pointer;
-    border-radius: .5rem;
-    margin-top: 1rem;
-    font-size: 15px;
-    padding: 5px;
-    background-color: rgb(209, 19, 19);
-  }
-  .btns:hover {
-    background: black;
-  }
-  
-  .transaction-table {
-    width: 100%;
-    overflow: auto;
-    max-height: calc(5 * 2rem + 4px); /* Adjust the max-height value based on your requirements */
-    overflow-x: hidden;
-  }
-  
-  .transaction-table thead th {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
-  
-  
-  
-  
-  
+.btna:hover {
+  background: black;
+}
+
+.btns {
+  display: block;
+  width: 25%;
+  cursor: pointer;
+  border-radius: .5rem;
+  margin-top: 1rem;
+  font-size: 15px;
+  padding: 5px;
+  background-color: rgb(209, 19, 19);
+}
+.btns:hover {
+  background: black;
+}
+
+.transaction-table {
+  width: 100%;
+  overflow: auto;
+  max-height: calc(5 * 2rem + 4px); /* Adjust the max-height value based on your requirements */
+  overflow-x: hidden;
+}
+
+.transaction-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+
+
