@@ -115,36 +115,49 @@ router.post("/add", async (req, res) => {
   });
 
 
-router.put('/update/:id', async (req, res) => {
-  const db = new Database();
-  const conn = db.connection;
-
-  const { id } = req.params;
-  const { policy, name, transac_date, due_date, list } = req.body;
-
-  const query = "UPDATE transaction SET policy = ?, name = ?, transac_date = ?, due_date = ?, list = ? WHERE id = ?";
-  const values = [policy, name, transac_date, due_date, list, id];
-
-  try {
-    await conn.connect();
-
-    conn.query(query, values, (error, result) => {
-      if (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error updating customer' });
-      } else {
-        console.log(result);
-        res.json({ message: "Customer updated successfully" });
-      }
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
-  } finally {
-    conn.end();
-  }
-});
-
+  router.put('/update/:id', async (req, res) => {
+    const db = new Database();
+    const conn = db.connection;
+  
+    const { id } = req.params;
+    const { policy, name, transac_date, due_date, list } = req.body;
+  
+    const query = "UPDATE transaction SET policy = ?, name = ?, transac_date = ?, due_date = ?, list = ? WHERE id = ?";
+    const values = [policy, name, transac_date, due_date, list, id];
+  
+    try {
+      await conn.connect();
+  
+      // Check if the policy already exists in the database
+      const checkQuery = "SELECT * FROM transaction WHERE policy = ? AND id <> ?";
+      const checkValues = [policy, id];
+      conn.query(checkQuery, checkValues, (error, result) => {
+        if (error) throw error;
+  
+        if (result.length > 0) {
+          // Policy already exists, send error response
+          res.json({ success: false, message: "Policy number already exists!" });
+        } else {
+          // Policy does not exist, proceed with the update
+          conn.query(query, values, (error, result) => {
+            if (error) {
+              console.error(error);
+              res.status(500).json({ message: 'Error updating customer' });
+            } else {
+              console.log(result);
+              res.json({ success: true, message: "Customer updated successfully" });
+            }
+            // Close the connection after executing the update query
+            conn.end();
+          });
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
 
 router.delete('/delete/:id', async (req, res) => {
   const db = new Database();

@@ -1,31 +1,28 @@
-.fluid {
-  width: 100%;
-  margin-top: 30px;
+/* Sidebar width */
+
+
+#parentM li a:hover,
+#parentM li a:active,
+#parentM li a.active {
+  background-color: #c0c2c4;
+  color: green !important;
 }
 
-.bckgrnd {
-  background-color: #f5f5f5;
-}
+.nav-link.active {
+	background-color: #c0c2c4;
+	color: green !important;
+  } */
 
-.entry-container {
-  border-radius: 1rem;
-  padding: 30px;
-}
+  /* .nav-pills li a:hover {
+	background-color: blue;
+  } */ */
 
-.entry-form {
-  border-radius: 1rem;
-}
-
-.input-group-sm {
-  width: 100%;
-}
-
-
-
-.btna {
-  width: 90px;
-}
-
-.btna:hover{
-  background:rgb(64, 64, 64);
-}
+  *{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+  }
+  main{
+    width: 100%;
+  }
+  

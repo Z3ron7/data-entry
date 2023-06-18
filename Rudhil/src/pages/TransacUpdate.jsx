@@ -59,28 +59,33 @@ const TransacUpdate = () => {
       name: (name1 && name1.label) || (name2 && name2.label),
       transac_date: transac_date,
       due_date: due_date,
-      list: category.map(option => option.label).join(','), // Extract values from category array
+      list: category.map((option) => option.label).join(','), // Extract values from category array
     };
   
     try {
-      await axios.put(`http://localhost:3000/api/transaction/update/${id}`, {
+      const updateResponse = await axios.put(`http://localhost:3000/api/transaction/update/${id}`, {
         policy: updateDetails.policy,
         name: updateDetails.name,
         transac_date: updateDetails.transac_date,
         due_date: updateDetails.due_date,
         list: updateDetails.list,
       });
-      await axios.post("http://localhost:3000/api/transaction/add/list", {
-        list: category.map((option) => option.label),
-        id: selectedId, // Pass the ID of the previously inserted record
-      });
   
-      window.alert("Customer updated successfully");
-      navigate(-1); // Navigate back to the previous page
+      if (updateResponse.data.success) {
+        await axios.post("http://localhost:3000/api/transaction/add/list", {
+          list: category.map((option) => option.label),
+          id: selectedId, // Pass the ID of the previously inserted record
+        });
+  
+        window.alert("Customer updated successfully");
+        navigate(-1); // Navigate back to the previous page
+      } else {
+        alert(updateResponse.data.message); // Display an alert message if the policy already exists or fields were not filled
+      }
     } catch (error) {
       console.log(error);
     }
-  };  
+  };
 
   const fetchInsuranceData = useCallback(async () => {
     try {
@@ -139,6 +144,10 @@ const TransacUpdate = () => {
 
   const handleSelect2 = (selectedOption) => {
     setName2(selectedOption);
+  };
+
+  const handleCancel = () => {
+    navigate(-1); // Navigate back to the previous page
   };
 
   return (
@@ -209,9 +218,15 @@ const TransacUpdate = () => {
                     onChange={handleSelect0}
                   />
                 </div>
-                <button className="btna lg mx-2 px-2 text-light mb-2 mx-auto" style={{ width: "90px" }} type="submit">
-                  Update
-                </button>
+                <div className="d-flex justify-content-center">
+                  <button className="btna lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="submit">
+                    Update
+                  </button>
+                  <div style={{ width: "8vh" }}></div>
+                  <button className="btns lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="button" onClick={handleCancel}>
+                    Cancel
+                  </button>
+                </div>
               </form>
             </div>
           </div>

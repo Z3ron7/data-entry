@@ -11,43 +11,16 @@
 .btna:hover{
   background:black;
 }
-.product-display {
-    margin: 2rem 0;
-    overflow-y: scroll;
-}
-.product-display .product-display-table{
-    width: 100%;
-}
-.product-display .product-display-table thead{
-    font-size: 2rem;
-    background: gray;
-}.product-display .product-display-table td{
-    padding: 1rem;
-    font-size: 2rem;
-    border-bottom: var(--border);
-}
-.form-control2 {
-    margin: 0 60px;
-}
-.form-control3 {
-    width: 750px;
-    margin-left:50%;
-    float: right;
+.insured-table {
+  width: 100%;
+  overflow: auto;
+  max-height: calc(5 * 2rem + 4px);
+  overflow-x: hidden;
 }
 
-.insured-table {
-    margin-left: 250px;
-    margin-right: 20px;
-  }
-  
-  @media (max-width: 768px) {
-    .insured-table {
-      margin-left: 15px; /* Margin value for screens up to 768px wide */
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .insured-table {
-      margin-left: 10px; /* Margin value for screens up to 576px wide */
-    }
-  }
+.insured-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+

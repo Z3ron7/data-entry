@@ -14,12 +14,10 @@ app.use(cors({
   credentials: true
 }));
 
-const usersRoute = require("./routes/Users");
 const customer_insuredRoute = require("./routes/CustomerInsured");
 const customer_entryRoute = require("./routes/Customer")
 const transactionRoute = require("./routes/Transaction")
 
-app.use("/api/users", usersRoute);
 app.use("/api/customer_insured", customer_insuredRoute);
 app.use("/api/customer_entry", customer_entryRoute);
 app.use("/api/transaction", transactionRoute);
