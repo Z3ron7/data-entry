@@ -44,7 +44,7 @@ function InsuredUpdate() {
           <div className="col-2"></div>
           <div className="col">
             <div className="col-12">
-              <div className="bg-white mt-5" style={{ borderRadius: '10px' }}>
+              <div className="bg-white mt-5 shadow" style={{ borderRadius: '10px' }}>
                 <div className='py-3 justify-content-center align-items-center h-100'>
                   <form className="container text-black" onSubmit={handleSubmit}>
                     <div className="mb-2 input-group-sm w-100">

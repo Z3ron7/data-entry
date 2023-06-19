@@ -56,7 +56,7 @@ const CustomerEntry = () => {
           <div className="col-2"></div>
           <div className="col">
             <div className="col-12">
-              <div className="bg-white text-black my-2 entry-container">
+              <div className="bg-white text-black my-2 entry-container shadow">
                 <div className="p-1 d-flex flex-column align-items-right">
                   <h5 className="fw-bold mb-4 text-uppercase">Customer</h5>
                   <form onSubmit={sendCustomer} className="entry-form">

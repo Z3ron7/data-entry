@@ -114,7 +114,7 @@ const Coverage = () => {
           <div className='col-md-5' style={{marginLeft: '30px'}}></div>
         <div className='col'>
             <button
-              className={`btn btn-outline-success mx-2 m-5 ${activeSection === 'insurance' ? 'active' : ''}`}
+              className={`btn btn-outline-success mx-2 m-5 shadow ${activeSection === 'insurance' ? 'active' : ''}`}
               style={{width:'20vh'}}
               type="button"
               data-bs-toggle="collapse"
@@ -126,7 +126,7 @@ const Coverage = () => {
               Insurance
             </button>
             <button
-              className={`btn btn-outline-success mx-2 m-5  ${activeSection === 'insured' ? 'active' : ''}`}
+              className={`btn btn-outline-success mx-2 m-5 shadow ${activeSection === 'insured' ? 'active' : ''}`}
               style={{width:'20vh'}}
               type="button"
               data-bs-toggle="collapse"

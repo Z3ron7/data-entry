@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import TransactionTable from "./TransactionTable";
 import Select from "react-select";
+import './transaction.css'
 
 const Transaction = () => {
   const [policy, setPolicy] = useState("");
@@ -198,8 +199,8 @@ const Transaction = () => {
       <div className="row w-100">
         <div className="col-3"></div>
         <div className="col-8">
-          <div className="row border mb-4">
-            <div className="col-6 col-sm-6 border border-dark border-2">
+          <div className="row mb-4 shadow">
+            <div className="col-6 col-sm-6 shadow" style={{borderRight:'2px solid black'}}>
               <form onSubmit={sendCustomer} style={{ borderRadius: "1rem" }}>
                 <div className="mb-2 input-group w-100 mt-2">
                   <input
@@ -258,13 +259,13 @@ const Transaction = () => {
                   <button className="btna btn lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="submit">
                     Save
                   </button>
-                  <button className="btns btn lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="button" onClick={() => handleClear()}>
+                  <button className="btns btn lg mx-2 px-2 text-light mb-2 " style={{ width: "90px"}} type="button" onClick={() => handleClear()}>
                     Clear
                   </button>
                 </div>
               </form>
             </div>
-            <div className="col-4 col-sm-6 border border-dark border-2 d-flex flex-column">
+            <div className="col-4 col-sm-6 d-flex flex-column shadow">
               <form onSubmit={sendCustomern} style={{ borderRadius: "1rem" }} className="flex-grow-1">
                 <div className="dropdown-container w-100 py-2">
                   <Select

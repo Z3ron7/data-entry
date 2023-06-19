@@ -40,7 +40,7 @@ function Login() {
         <div>
           <img className="ms-2 mx-3" alt='Rudhil logo' src={Logo} style={{ width: "240px", height: "230px" }} />
         </div>
-        <form className="mx-auto px-3 shadow" style={{ backgroundColor: "#d3d3d3", marginTop: "30px", width: '55vh' }} onSubmit={onHandleLogin}>
+        <form className="mx-auto px-3 shadow" style={{ backgroundColor: "#d3d3d3", marginTop: "30px", width: '55vh', borderRadius:'10px' }} onSubmit={onHandleLogin}>
           <div className="mb-2 ">
             <div className="login-top text-center">
               <label className="form-label" style={{ fontSize: "40px", fontWeight:'bold' }}>
