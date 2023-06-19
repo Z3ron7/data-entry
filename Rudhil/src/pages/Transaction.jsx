@@ -201,7 +201,7 @@ const Transaction = () => {
         <div className="col-8">
           <div className="row mb-4 shadow">
             <div className="col-6 col-sm-6 shadow" style={{borderRight:'2px solid black'}}>
-              <form onSubmit={sendCustomer} style={{ borderRadius: "1rem" }}>
+              <form onSubmit={sendCustomer} >
                 <div className="mb-2 input-group w-100 mt-2">
                   <input
                     className="lg form-control"
@@ -266,7 +266,7 @@ const Transaction = () => {
               </form>
             </div>
             <div className="col-4 col-sm-6 d-flex flex-column shadow">
-              <form onSubmit={sendCustomern} style={{ borderRadius: "1rem" }} className="flex-grow-1">
+              <form onSubmit={sendCustomern}>
                 <div className="dropdown-container w-100 py-2">
                   <Select
                     options={optionList}
@@ -286,7 +286,7 @@ const Transaction = () => {
         </div>
       </div>
       </div>
-      <div className="mb-4 mt-2">
+      <div className="mb-5 mt-2">
             <div className="col-md-12 d-flex justify-content-end">
               {/* Search box */}
               <input

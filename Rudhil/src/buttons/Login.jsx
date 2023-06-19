@@ -20,6 +20,7 @@ function Login() {
         if (res.data.Status === "Login Successful") {
           localStorage.setItem("token", res.data.token); // Store the token in local storage
           navigate("/customer-entry");
+          alert("Login successfully."); // Display the alert message
         } else {
           alert(res.data.Error);
         }
