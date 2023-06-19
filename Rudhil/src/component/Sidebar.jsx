@@ -20,9 +20,9 @@ function Sidebar() {
   };
 
   return (
-    <div className="mx-0">
-      <div className="row d-flex">
-        <div className="col-auto col-sm-2 w-100 bg-white flex-column justify-content-start min-vh-100">
+    <div className="">
+      <div className="row">
+        <div className="col-auto w-100 bg-white justify-content-start min-vh-100">
           <div className="mt-2">
             <a href="/customer-entry" className="text-decoration-none d-flex align-items-center text-black d-none d-sm-inline">
               <img className="ms-2 mx-3" alt='Rudhil logo' src={Logo} style={{width:"55px", height: "51px"}}/>
@@ -43,7 +43,7 @@ function Sidebar() {
                       <span className="ms-2 d-none d-sm-inline">Data entry</span>
                     </div>
                     <i
-                      className={`bi ${isDataEntryOpen ? 'bi-caret-up-fill' : 'bi-caret-down-fill toggle-btn'}`}
+                      className={`bi ${isDataEntryOpen ? 'bi-caret-up-fill toggle-btn' : 'bi-caret-up-fill toggle-btn rotate'}`}
                     />
                   </a>
                 </div>
@@ -51,9 +51,9 @@ function Sidebar() {
                   className={`nav collapse ms-1 flex-column ${isDataEntryOpen ? 'show' : ''}`}
                   id="submenu"
                   data-bs-parent="#parentM"
-                  style={{ transitionDuration: isDataEntryOpen ? '0.5s' : '0.3s' }}
+                  style={{ transitionDuration: isDataEntryOpen ? '0.9s' : '0.3s' }}
                 >
-                  <li className="nav-item">
+                  <li className="nav-item my-1">
                     <NavLink
                       exact
                       to="/customer-entry"
@@ -77,7 +77,7 @@ function Sidebar() {
                       <span className="ms-2 d-none d-sm-inline">Insured</span>
                     </NavLink>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item my-1">
                     <NavLink
                       exact
                       to="/coverage"
@@ -92,7 +92,7 @@ function Sidebar() {
                 </ul>
               </li>
               <hr className="text-black" />
-              <li className="nav-item my-1" id="triggerId" data-bs-toggle="collapse" aria-current="page">
+              <li className="nav-item">
                 <NavLink
                   exact
                   to="/transaction"

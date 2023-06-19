@@ -11,21 +11,7 @@
 .btna:hover{
     background:black;
 }
-.product-display {
-    margin: 2rem 0;
-    overflow-y: scroll;
-}
-.product-display .product-display-table{
-    width: 100%;
-}
-.product-display .product-display-table thead{
-    font-size: 2rem;
-    background: gray;
-}.product-display .product-display-table td{
-    padding: 1rem;
-    font-size: 2rem;
-    border-bottom: var(--border);
-}
+
 .form-control2 {
     margin: 0 60px;
 }

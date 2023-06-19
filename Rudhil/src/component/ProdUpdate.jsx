@@ -8,7 +8,7 @@ function ProdUpdate() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const handleData = async function() {
+  const handleData = async function () {
     try {
       const { data } = await axios.get(`http://localhost:3000/api/customer_entry/${id}`);
       setName(data[0].Name);
@@ -21,7 +21,7 @@ function ProdUpdate() {
     handleData();
   }, []);
 
-  const handleSubmit = async function(e) {
+  const handleSubmit = async function (e) {
     e.preventDefault();
 
     const updateDetails = {
@@ -38,32 +38,36 @@ function ProdUpdate() {
   };
 
   return (
-    <div className="bg-secondary" style={{ marginLeft: "450px", marginRight: "160px", backgroundColor: "rgb(228, 228, 215)" }}>
-      <div className='product-display justify-content-center align-items-center h-100'>
-        <form className="container mt-3 text-light" onSubmit={handleSubmit}>
-          <div className="mb-2 input-group-sm w-100">
-            <label className="form-label text-light">Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              value={Name}
-              onChange={(e) => setName(e.target.value)}
-            />
+    <div className="fluid bckgrnd min-vh-100" style={{ backgroundColor: "rgb(228, 228, 215)" }}>
+      <div className="d-flex justify-content-center">
+        <div className="row w-75">
+          <div className="col-2"></div>
+          <div className="col">
+            <div className="col-12">
+              <div className="bg-white mt-5" style={{ borderRadius: '10px' }}>
+                <div className='py-3 justify-content-center align-items-center h-100'>
+                  <form className="container text-black" onSubmit={handleSubmit}>
+                    <div className="mb-2 input-group-sm w-100">
+                      <label className="form-label text-black">Name</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="name"
+                        value={Name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                  <button className="btna lg mx-2 px-2 text-light mb-2 btn" style={{ width: "90px" }} type="submit">
+                    Update
+                  </button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-          <button
-            className="justify-content-center"
-            type="submit"
-            style={{
-              width: '20%',
-              height: '3rem',
-              marginTop: '1rem',
-              justifyContent: 'center'
-            }}
-          >
-            Update
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );

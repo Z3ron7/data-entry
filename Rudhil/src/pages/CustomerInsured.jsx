@@ -28,6 +28,7 @@ const CustomerInsured = () => {
       await axios.post("http://localhost:3000/api/customer_insured/add", { Name });
       updateTable(); // Call the updateTable function to update the table
       setName(""); // Clear the input field after adding a customer
+      alert("Customer successfully added!"); // Display the alert message
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +58,7 @@ const CustomerInsured = () => {
         <div className="col-12">
           <div className="bg-white text-black my-2 entry-container">
             <div className="p-1 d-flex flex-column align-items-right">
-              <h5 className="fw-bold mb-4 text-uppercase">Customer Insured</h5>
+              <h5 className="fw-bold mb-4 text-uppercase">Insured Customer</h5>
               <form onSubmit={sendCustomer} className="entry-form">
                 <div className="mb-4 input-group-sm">
                   <input
@@ -70,7 +71,7 @@ const CustomerInsured = () => {
                     autoComplete="off"
                   />
                 </div>
-                <button className="btna text-light" type="submit" style={{width:"90px"}}>
+                <button className="btna btn text-light" type="submit" style={{width:"90px"}}>
                   Save
                 </button>
               </form>

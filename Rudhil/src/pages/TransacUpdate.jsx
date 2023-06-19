@@ -151,11 +151,11 @@ const TransacUpdate = () => {
   };
 
   return (
-    <div className="fluid py-3" style={{ backgroundColor: "rgb(228, 228, 215)" }}>
+    <div className="fluid py-3 min-vh-100" style={{ backgroundColor: "rgb(228, 228, 215)" }}>
       <div className="row">
         <div className="col-sm-5 "></div>
         <div className="col-md-7">
-          <div className="row border">
+          <div className="row border py-5">
             <div className="col-8 col-sm-6 border border-dark border-2">
               <form onSubmit={handleSubmit} style={{ borderRadius: "1rem" }}>
                 <div className="mb-2 input-group-sm w-100 mt-2">

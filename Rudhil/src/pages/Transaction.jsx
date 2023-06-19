@@ -110,6 +110,7 @@ const Transaction = () => {
         setCoverage([]);
         setName1(null);
         setName2(null);
+        alert("Successfully added!"); // Display the alert message
       } else {
         // Policy already exists or fields were not filled, display an alert message to the user
         alert(addResponse.data.message);
@@ -129,6 +130,7 @@ const Transaction = () => {
 
       updateTable();
       setCoverage([]);
+      alert("Successfully added!"); // Display the alert message
     } catch (error) {
       console.log(error);
     }
@@ -220,7 +222,7 @@ const Transaction = () => {
                     onChange={handleSelect1}
                   />
                 </div>
-                <div className="dropdown-container w-100 py-2">
+                <div className="dropdown-container w-100 py-2 postion-relative" >
                   <Select
                     options={optionList2}
                     placeholder="Insured"
@@ -253,10 +255,10 @@ const Transaction = () => {
                 </LocalizationProvider>
                 </div>
                 <div className="d-flex justify-content-between">
-                  <button className="btna lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="submit">
+                  <button className="btna btn lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="submit">
                     Save
                   </button>
-                  <button className="btns lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="button" onClick={() => handleClear()}>
+                  <button className="btns btn lg mx-2 px-2 text-light mb-2" style={{ width: "90px" }} type="button" onClick={() => handleClear()}>
                     Clear
                   </button>
                 </div>
@@ -274,7 +276,7 @@ const Transaction = () => {
                     onChange={handleSelect0}
                   />
                 </div>
-                <button className="btna lg mx-2 mx-auto px-2 text-light" style={{ width: "90px" }} type="submit">
+                <button className="btna btn lg mx-2 mx-auto px-2 text-light" style={{ width: "90px" }} type="submit">
                   Add
                 </button>
               </form>

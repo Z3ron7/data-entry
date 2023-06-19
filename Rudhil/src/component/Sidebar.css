@@ -25,4 +25,13 @@
   main{
     width: 100%;
   }
+
+  .toggle-btn {
+    transition: transform 0.5s;
+  }
+  
+  .toggle-btn.rotate {
+    transform: rotate(-180deg);
+  }
+
   

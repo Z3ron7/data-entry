@@ -2,32 +2,6 @@
   margin-right: -25px;
 }
 
-.coverage-container .coverage {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.coverage-container .coverage .btn {
-  margin: 0.5rem;
-}
-
-.input-group {
-  margin-top: 45px;
-}
-
-.input-group .form-control {
-  width: 300px;
-}
-
-.input-group .btn-outline-success {
-  width: 100px;
-}
-
-.fluid {
-  width: 100%;
-}
-
 .bckgrnd {
   background-color: #f5f5f5;
 }

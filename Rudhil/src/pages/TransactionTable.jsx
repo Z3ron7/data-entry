@@ -75,11 +75,11 @@ const TransactionTable = ({ customers, updateTable, searchQuery  }) => {
                   </div>
                 </td>
                 <td className="text-center" style={{alignItems: "center", justifyContent: 'center'}}>
+                <Link to={`/transacUpdate/${item.id}`} className='text-decoration-none text-white justify-content-center'>
                   <button type='button' className='btn btn-warning m-2' style={{ width: '40px', height: '2rem', alignItems: 'center', justifySelf: 'center' }}>
-                    <Link to={`/transacUpdate/${item.id}`} className='text-decoration-none text-white justify-content-center'>
                       <i className='text-dark fa fa-edit'></i>
-                    </Link>
-                  </button>
+                      </button>
+                  </Link>
                   |
                   <button
                     type='button'

@@ -55,11 +55,11 @@ const InsuredList = ({ customers, updateTable, searchQuery }) => {
                   <th scope='row'>{item.id}</th>
                   <td className='text-wrap'>{item.Name}</td>
                   <td className='text-center'>
+                  <Link to={`/InsuredUpdate/${item.id}`} className='text-decoration-none text-white justify-content-center'>
                     <button type='button' className='btn btn-warning m-2' style={{ width: '40px', height: '2rem', alignItems: 'center', justifySelf: 'center' }}>
-                      <Link to={`/InsuredUpdate/${item.id}`} className='text-decoration-none text-white justify-content-center'>
-                        <i className='text-dark fa fa-edit'></i>
-                      </Link>
+                        <i className='text-dark fa fa-edit'></i> 
                     </button>
+                    </Link>
                     |
                     <button
                       type='button'

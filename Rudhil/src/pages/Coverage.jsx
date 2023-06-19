@@ -107,11 +107,11 @@ const Coverage = () => {
   };
 
   return (
-    <div className="container-fluid" style={{ backgroundColor: 'rgb(228, 228, 215)' }}>
+    <div className="container-fluid" style={{ backgroundColor: 'rgb(228, 228, 215)', marginTop: '30px' }}>
         <div className="container-fluid min-vh-100">
           <div className="col-md-12 coverage-top">
         <div className='row'>
-          <div className='col-md-5' style={{marginLeft: '65px'}}></div>
+          <div className='col-md-5' style={{marginLeft: '30px'}}></div>
         <div className='col'>
             <button
               className={`btn btn-outline-success mx-2 m-5 ${activeSection === 'insurance' ? 'active' : ''}`}
@@ -141,8 +141,8 @@ const Coverage = () => {
             <div className='row'>
           <div className='col-2'></div>
         <div className='col'>
-              <form className="d-flex justify-content-end" onSubmit={handleSearchSubmit}>
-                <div className="input-group">
+              <form className="d-flex justify-content-end mb-5" onSubmit={handleSearchSubmit}>
+                <div className="input-group ">
                   <input
                     className="form-control shadow"
                     type="search"
@@ -180,6 +180,10 @@ const Coverage = () => {
                     <th scope="row">{row.id}</th>
                     <td className="text-wrap">{row.Name}</td>
                     <td className="text-center">
+                    <Link
+                          to={`/prodUpdate/${row.id}`}
+                          className="text-decoration-none text-white justify-content-center"
+                        >
                       <button
                         type="button"
                         className="btn btn-warning m-2"
@@ -190,13 +194,9 @@ const Coverage = () => {
                           justifySelf: 'center',
                         }}
                       >
-                        <Link
-                          to={`/prodUpdate/${row.id}`}
-                          className="text-decoration-none text-white justify-content-center"
-                        >
                           <i className="text-dark fa fa-edit"></i>
-                        </Link>
                       </button>
+                      </Link>
                       |
                       <button
                         type="button"
@@ -255,6 +255,10 @@ const Coverage = () => {
                     <th scope="row">{row.id}</th>
                     <td className="text-wrap">{row.Name}</td>
                     <td className="text-center">
+                    <Link
+                          to={`/InsuredUpdate/${row.id}`}
+                          className="text-decoration-none text-white justify-content-center"
+                        >
                       <button
                         type="button"
                         className="btn btn-warning m-2"
@@ -265,13 +269,9 @@ const Coverage = () => {
                           justifySelf: 'center',
                         }}
                       >
-                        <Link
-                          to={`/InsuredUpdate/${row.id}`}
-                          className="text-decoration-none text-white justify-content-center"
-                        >
                           <i className="text-dark fa fa-edit"></i>
-                        </Link>
                       </button>
+                      </Link>
                       |
                       <button
                         type="button"
