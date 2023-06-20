@@ -1,5 +1,5 @@
 const express = require("express");
-const Database = require("./configs/Database");
+const Database = require("./src/configs/Database");
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const cookieParser = require("cookie-parser");
@@ -14,9 +14,9 @@ app.use(cors({
   credentials: true
 }));
 
-const customer_insuredRoute = require("./routes/CustomerInsured");
-const customer_entryRoute = require("./routes/Customer")
-const transactionRoute = require("./routes/Transaction")
+const customer_insuredRoute = require("./src/routes/CustomerInsured");
+const customer_entryRoute = require("./src/routes/Customer")
+const transactionRoute = require("./src/routes/Transaction")
 
 app.use("/api/customer_insured", customer_insuredRoute);
 app.use("/api/customer_entry", customer_entryRoute);

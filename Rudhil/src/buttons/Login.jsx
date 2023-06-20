@@ -56,6 +56,7 @@ function Login() {
               aria-describedby="usernameHelp"
               onChange={(e) => setValues({ ...values, username: e.target.value })}
               required
+              autoComplete="off"
             />
           </div>
           <div className="mb-2">
