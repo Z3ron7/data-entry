@@ -17,7 +17,7 @@
 .transaction-table {
   width: 100%;
   overflow: auto;
-  max-height: calc(5 * 2rem + 4px); /* Adjust the max-height value based on your requirements */
+  max-height: calc(5 * 2rem + 4px); 
   overflow-x: hidden;
 }
 

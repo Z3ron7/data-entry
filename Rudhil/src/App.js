@@ -9,13 +9,11 @@ import Login from "./buttons/Login";
 import Signup from "./buttons/Signup";
 import Sidebar from "./component/Sidebar";
 import Home from "./pages/Home";
-import Admin from "./component/Admin";
 import ProdList from "./pages/ProdList";
 import InsuredList from "./pages/InsuredList";
 import ProdUpdate from "./component/ProdUpdate";
 import InsuredUpdate from "./component/InsuredUpdate";
 import TransacUpdate from "./pages/TransacUpdate";
-import LoginAdmin from "./component/AdminLogin";
 import Logout from "./buttons/Logout";
 
 // Layout component with Sidebar and Navbar
@@ -50,7 +48,6 @@ function App() {
       <Route path="/signup" element={<EmptyLayout><Signup /></EmptyLayout>} />
       <Route path="/" element={<EmptyLayout><Login /></EmptyLayout>} />
       <Route path="/logout" element={<EmptyLayout><Logout /></EmptyLayout>} />
-      <Route path="/loginadmin" element={<MainLayout><LoginAdmin /></MainLayout>} />
 
       <Route
         path="/customer-entry"
@@ -67,10 +64,6 @@ function App() {
       <Route
         path="/transaction"
         element={isAuthenticated() ? <MainLayout><Transaction /></MainLayout> : <Navigate to="/" replace />}
-      />
-      <Route
-        path="/admin"
-        element={isAuthenticated() ? <MainLayout><Admin /></MainLayout> : <Navigate to="/" replace />}
       />
       <Route
         path="/productList"

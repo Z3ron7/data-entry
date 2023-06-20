@@ -11,11 +11,7 @@
 .nav-link.active {
 	background-color: #c0c2c4;
 	color: green !important;
-  } */
-
-  /* .nav-pills li a:hover {
-	background-color: blue;
-  } */ */
+  }
 
   *{
     margin:0;

@@ -8,13 +8,13 @@
 
 @media (max-width: 446px) {
   .coverage {
-    margin-left: 20px; /* Margin value for screens up to 576px wide */
+    margin-left: 20px; 
   }
 }
 
 @media (max-width: 991px) {
   .coverage-top {
-    margin-left: 50px; /* Margin value for screens up to 576px wide */
+    margin-left: 50px; 
   }
 }
 
